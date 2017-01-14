@@ -31,17 +31,14 @@ h2 {
     }
 }
 
-@media(max-width: 767px) {
-    h2 {
-        width: 100%;
-        text-align: center;
-    }
+.center-form {
+    width: 100%;
+    max-width: 400px;
+    float: none;
+    margin: 0 auto;
 
-    form {
-        width: 100%;
-        max-width: 300px;
-        float: none;
-        margin: 0 auto;
+    h2 {
+        margin-bottom: 40px;
     }
 
     label,
@@ -49,8 +46,27 @@ h2 {
         width: 100%;
     }
 
+    label {
+        font-size: 1.1em;
+        margin-top: 3px;
+    }
+
+    input {
+        font-size: 1.1em;
+    }
+
     .alternative {
         float: left;
         margin-top: 10px;
     }
+
+    .form-group {
+        margin-bottom: 30px;
+    }
+}
+
+#viewport {
+    margin-top: 10px;
+    float: left;
+    width: 100%;
 }
