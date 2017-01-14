@@ -15,3 +15,6 @@ h2 Login
         = password_field_tag :password
   .form-group
     = submit_tag 'Login', class: 'btn btn-default'
+    span.alternative
+      span Not one of us?
+      = link_to 'Register', new_users_path
