@@ -30,6 +30,7 @@ html
                   .form-group
                     = submit_tag 'Login', class: 'btn btn-default'
                   .form-group
+                    span.mobile-message Not one of us?
                     = link_to 'Register', new_users_path
     .container
       - if flash[:notice]

@@ -26,5 +26,34 @@
         .logout {
             float: right;
         }
+
+        .mobile-message {
+            display: none;
+            margin-right: 5px;
+        }
+    }
+
+    @media(max-width: 767px) {
+        .brand {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .user-nav {
+            width: 100%;
+            max-width: 300px;
+            float: none;
+            margin: 0 auto;
+
+            label,
+            input {
+                width: 100%;
+            }
+
+            .mobile-message {
+                display: inline;
+            }
+        }
     }
 }
