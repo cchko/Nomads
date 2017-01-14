@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    title
+      | Nomads
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    #header
+      .container
+        .row
+          .col-md-4
+            .brand
+              h1 Nomads
+          .col-md-8
+            .user-nav
+              - if current_user
+                p Howdy ho <b>#{current_user.email}</b>
+                = link_to 'Logout', logout_path, class: 'logout'
+              - else
+                = form_tag login_path, class: 'form form-inline' do
+                  .form-group
+                    = label_tag :email
+                    = email_field_tag :email
+                  .form-group
+                    = label_tag :password
+                    = password_field_tag :password
+                  .form-group
+                    = submit_tag 'Login', class: 'btn btn-default'
+                  .form-group
+                    = link_to 'Register', new_users_path
+    .container
+      - if flash[:notice]
+        p.notice = flash[:notice]
+      - if flash[:error]
+        p.error = flash[:error]
+      - if flash[:errors]
+        ul.error
+          - flash[:errors].each do |error|
+            li = error
+      = yield

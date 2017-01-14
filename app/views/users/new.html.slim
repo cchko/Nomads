@@ -1,0 +1,17 @@
+h2 Register
+
+= form_tag users_path, class: 'form' do
+  .form-group
+    .row
+      .col-md-2
+        = label_tag :email
+      .col-md-10
+        = email_field_tag :email, @user.email
+  .form-group
+    .row
+      .col-md-2
+        = label_tag :password
+      .col-md-10
+        = password_field_tag :password
+  .form-group
+    = submit_tag 'Embark', class: 'btn btn-default'

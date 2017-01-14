@@ -1,0 +1,25 @@
+#header {
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+
+    .brand {
+        float: left;
+    }
+
+    .user-nav {
+        float: right;
+        padding: 20px 0;
+
+        label,
+        input {
+            margin: 5px;
+        }
+
+        .logout {
+            float: right;
+        }
+    }
+}

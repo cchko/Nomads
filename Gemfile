@@ -15,9 +15,11 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
+gem 'slim-rails'
+gem 'bootstrap-sass'
 
 group :development, :test do
-  gem 'byebug', platform: :mri
+  gem 'pry'
 end
 
 group :development do

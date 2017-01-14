@@ -1,0 +1,20 @@
+@import 'bootstrap';
+@import 'bootstrap-sprockets';
+
+h2 {
+    margin-bottom: 30px;
+}
+
+.notice,
+.error {
+    float: left;
+    width: 100%;
+}
+
+.notice {
+    color: #1db645;
+}
+
+.error {
+    color: #f00;
+}
