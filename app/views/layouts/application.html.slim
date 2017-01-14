@@ -15,6 +15,9 @@ html
               a href='/'
                 h1 Nomads
           .col-md-8
+            .mobile-user-nav
+              = link_to 'Join Us', new_users_path
+              = link_to 'Login', login_path
             .user-nav
               - if current_user
                 p Howdy ho <b>#{current_user.email}</b>
@@ -31,7 +34,7 @@ html
                     = submit_tag 'Login', class: 'btn btn-default'
                   .form-group
                     span.mobile-message Not one of us?
-                    = link_to 'Register', new_users_path
+                    = link_to 'Join Us', new_users_path, class: 'register'
     .container
       - if flash[:notice]
         p.notice = flash[:notice]

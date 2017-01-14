@@ -31,6 +31,20 @@
             display: none;
             margin-right: 5px;
         }
+
+        .register {
+            margin-left: 5px;
+        }
+    }
+
+    .mobile-user-nav {
+        display: none;
+        padding: 20px 0;
+
+        a {
+            float: right;
+            margin: 0 20px;
+        }
     }
 
     @media(max-width: 767px) {
@@ -41,6 +55,7 @@
         }
 
         .user-nav {
+            display: none;
             width: 100%;
             max-width: 300px;
             float: none;
@@ -54,6 +69,10 @@
             .mobile-message {
                 display: inline;
             }
+        }
+
+        .mobile-user-nav {
+            display: block;
         }
     }
 }
