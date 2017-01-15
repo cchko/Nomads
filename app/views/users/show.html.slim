@@ -1,0 +1,33 @@
+.center-form.profile
+  .row
+    .col-md-6
+      h2 Profile
+    .col-md-6
+      - if @user.id == current_user.id
+        = link_to 'Edit', edit_user_path(@user), class: 'edit'
+
+  .row
+    .col-md-3
+      strong Email
+    .col-md-9
+      span.attr = @user.email
+  .row
+    .col-md-3
+      strong First Name
+    .col-md-9
+      span.attr = @user.first_name
+  .row
+    .col-md-3
+      strong Last Name
+    .col-md-9
+      span.attr = @user.last_name
+  .row
+    .col-md-3
+      strong Age
+    .col-md-9
+      span.attr = @user.age
+  .row
+    .col-md-3
+      strong Phone
+    .col-md-9
+      span.attr = @user.phone

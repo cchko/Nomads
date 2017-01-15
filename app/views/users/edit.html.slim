@@ -1,0 +1,45 @@
+= form_tag user_path(@user), method: 'PUT', class: 'form center-form' do
+  h2 Edit Profile
+
+  .form-group
+    .row
+      .col-md-4
+        = label_tag :email
+      .col-md-8
+        = email_field_tag :email, @user.email
+  .form-group
+    .row
+      .col-md-4
+        = label_tag :password
+      .col-md-8
+        = password_field_tag :password
+  .form-group
+    .row
+      .col-md-4
+        = label_tag :first_name
+      .col-md-8
+        = text_field_tag :first_name
+  .form-group
+    .row
+      .col-md-4
+        = label_tag :last_name
+      .col-md-8
+        = text_field_tag :last_name
+  .form-group
+    .row
+      .col-md-4
+        = label_tag :age
+      .col-md-8
+        = number_field_tag :age
+  .form-group
+    .row
+      .col-md-4
+        = label_tag :phone
+      .col-md-8
+        = phone_field_tag :phone
+  .form-group
+    = submit_tag 'Update', class: 'btn btn-default btn-block'
+    span.alternative
+      span Changed your mind?
+      = link_to 'Cancel', user_path(@user.id)
+
