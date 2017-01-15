@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'map#index'
+  root to: 'jobs#index'
 
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create'
