@@ -9,6 +9,8 @@ table.table
   tbody
     - @ads.each do |ad|
       tr
-        td = ad.created_at.strftime('%m/%d/%y - %l:%M%P')
+        td = ad.created_at.strftime('%m/%d/%y')
         td = link_to ad.title, job_path(ad)
-        td = ad.user.email
+        td
+          = image_tag(ad.user.avatar, alt: '') if ad.user.avatar
+          span = ad.user.full_name
