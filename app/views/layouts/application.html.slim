@@ -43,6 +43,14 @@ html
                   .form-group
                     span.mobile-message Not one of us?
                     = link_to 'Join Us', new_user_path, class: 'register'
+        .row
+          .categories
+            .col-md-4
+              = link_to 'Jobs', jobs_path
+            .col-md-4
+              = link_to 'Rides', rides_path
+            .col-md-4
+              = link_to 'Stays', stays_path
     .container
       - if flash[:notice]
         p.notice = flash[:notice]

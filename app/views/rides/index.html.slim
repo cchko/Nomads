@@ -1,0 +1,16 @@
+h2 Rides
+
+table.table
+  thead
+    tr
+      th Posted
+      th Date Offered
+      th Title
+      th Posted by
+  tbody
+    - @ads.each do |ad|
+      tr
+        td = ad.created_at.strftime('%m/%d/%y - %l:%M%P')
+        td = ad.start_date.strftime('%m/%d/%y - %l:%M%P')
+        td = link_to ad.title, job_path(ad)
+        td = ad.user.email
