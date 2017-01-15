@@ -18,6 +18,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'slim-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
+gem 'faker'
 
 group :development, :test do
   gem 'pry'

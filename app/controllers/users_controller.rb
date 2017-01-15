@@ -12,6 +12,11 @@ class UsersController < ApplicationController
     @user = User.new
     @user.email = params[:email]
     @user.password = params[:password]
+    @user.avatar = Faker::Avatar.image
+    @user.first_name = params[:first_name]
+    @user.last_name = params[:last_name]
+    @user.age = params[:age]
+    @user.phone = params[:phone]
 
     if @user.save
       session[:user_id] = @user.id
