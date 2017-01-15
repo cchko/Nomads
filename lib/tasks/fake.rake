@@ -18,7 +18,7 @@ namespace :fake do
     users = User.all
 
     [Ad::JOBS_CATEGORY, Ad::STAYS_CATEGORY, Ad::RIDES_CATEGORY].each do |category|
-      50.times do |n|
+      150.times do |n|
         ad = Ad.new
         ad.category = category
 

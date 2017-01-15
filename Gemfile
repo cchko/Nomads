@@ -19,6 +19,7 @@ gem 'slim-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'faker'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'pry'

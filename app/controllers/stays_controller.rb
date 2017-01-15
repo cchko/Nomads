@@ -1,7 +1,7 @@
 class StaysController < ApplicationController
 
   def index
-    @ads = Ad.by_stays
+    @ads = Ad.by_stays.paginate(page: params[:page])
   end
 
   def show

@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
 
   def index
-    @ads = Ad.by_jobs
+    @ads = Ad.by_jobs.paginate(page: params[:page])
   end
 
   def show

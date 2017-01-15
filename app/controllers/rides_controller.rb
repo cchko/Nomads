@@ -1,7 +1,7 @@
 class RidesController < ApplicationController
 
   def index
-    @ads = Ad.by_rides
+    @ads = Ad.by_rides.paginate(page: params[:page])
   end
 
   def show
