@@ -24,19 +24,17 @@ jobs:
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/nomads_test
         run: |
-          # fix issue with Heroku GPG key
-          #apt-key del 536F8F1DE80F6A35
-          #apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv-keys 536F8F1DE80F6A35
-          #curl -L https://cli-assets.heroku.com/apt/release.key | sudo apt-key add
-
           # update package manager
-          apt-get update
+          apt update
 
           # install packages for node modules
-          apt-get install -y fontforge ttfautohint
+          apt install -y fontforge ttfautohint
+
+          # install Git
+          apt install git
 
           # install ruby
-          RUBY_VERSION=$(cat .ruby-version || echo "3.2.2")
+          RUBY_VERSION=$(cat .ruby-version 2>/dev/null || echo "3.2.2")
           echo "Ruby Version: $RUBY_VERSION"
           git clone https://github.com/rbenv/rbenv.git ~/.rbenv
           eval "$(~/.rbenv/bin/rbenv init - bash)"
