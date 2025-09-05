@@ -40,6 +40,7 @@ jobs:
           apt-get install -y fontforge ttfautohint
 
           # install ruby
+          apt-get install -y zlib1g-dev libssl-dev libreadline-dev libpq-dev libffi-dev
           RUBY_VERSION=$(cat .ruby-version 2>/dev/null || echo "3.2.2")
           echo "Ruby Version: $RUBY_VERSION"
           git clone https://github.com/rbenv/rbenv.git ~/.rbenv
