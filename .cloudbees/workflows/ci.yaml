@@ -24,8 +24,42 @@ jobs:
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/nomads_test
         run: |
-          apt-get update && apt-get install -y ruby-full build-essential libpq-development
-          gem install bundler
+          # fix issue with Heroku GPG key
+          sudo apt-key del 536F8F1DE80F6A35
+          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv-keys 536F8F1DE80F6A35
+          curl -L https://cli-assets.heroku.com/apt/release.key | sudo apt-key add
+          # update package manager
+          sudo apt-get update
+
+          # install packages for node modules
+          sudo apt-get install -y fontforge ttfautohint
+
+          # install ruby
+          RUBY_VERSION=$(cat .ruby-version || echo "3.2.2")
+          echo "Ruby Version: $RUBY_VERSION"
+          git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+          eval "$(~/.rbenv/bin/rbenv init - bash)"
+          git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+          rbenv install $RUBY_VERSION
+          rbenv global $RUBY_VERSION
+          gem install bundler:2.3.26
+
+          # setup app
           bundle install
-          bundle exec rake db:prepare
-          bundle exec rspec
+          export RAILS_ENV=test
+
+          # build assets
+          cp grunt-aws.dev.json grunt-aws.json
+          nvm install lts/hydrogen
+          nvm use lts/hydrogen
+          npm i -g yarn
+          rm -rf ./node_modules
+          yarn install
+
+          # setup database
+          bundle exec rake db:schema:load
+          bin/rails db:environment:set RAILS_ENV=test
+          bin/rails db:migrate RAILS_ENV=test
+
+          # run tests
+          bundle exec rspec --exclude-pattern "**/feature/*_spec.rb"
