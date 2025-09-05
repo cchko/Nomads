@@ -25,13 +25,13 @@ jobs:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/nomads_test
         run: |
           # update package manager
-          apt update
+          apt-get update
 
           # install packages for node modules
-          apt install -y fontforge ttfautohint
+          apt-get install -y fontforge ttfautohint
 
           # install Git
-          apt install git
+          apt-get install -y git
 
           # install ruby
           RUBY_VERSION=$(cat .ruby-version 2>/dev/null || echo "3.2.2")
