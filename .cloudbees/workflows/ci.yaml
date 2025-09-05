@@ -1,0 +1,31 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: ci
+on:
+  push:
+    branches: ['**']
+
+jobs:
+  test:
+    services:
+      db:
+        image: postgres16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: nomads_test
+
+    steps:
+      - name: Checkout
+        uses: https://github.com/cloudbees-io/checkout@v1
+      - name: Run tests in Ubuntu
+        uses: docker://ubuntu:24.04
+        shell: bash
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/nomads_test
+        run: |
+          apt-get update && apt-get install -y ruby-full build-essential libpq-development
+          gem install bundler
+          bundle install
+          bundle exec rake db:prepare
+          bundle exec rspec
