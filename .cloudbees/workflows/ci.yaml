@@ -42,7 +42,7 @@ jobs:
           git clone https://github.com/rbenv/rbenv.git ~/.rbenv
           eval "$(~/.rbenv/bin/rbenv init - bash)"
           git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
-          if ! rbenv install $RUBY_VERSION ; then cat /tmp/ruby-build.*.log && exit 1
+          if ! rbenv install $RUBY_VERSION ; then cat /tmp/ruby-build.*.log && exit 1; fi
           rbenv global $RUBY_VERSION
           gem install bundler:2.3.26
 
