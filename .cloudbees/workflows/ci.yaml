@@ -25,14 +25,15 @@ jobs:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/nomads_test
         run: |
           # fix issue with Heroku GPG key
-          sudo apt-key del 536F8F1DE80F6A35
-          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv-keys 536F8F1DE80F6A35
+          apt-key del 536F8F1DE80F6A35
+          apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv-keys 536F8F1DE80F6A35
           curl -L https://cli-assets.heroku.com/apt/release.key | sudo apt-key add
+
           # update package manager
-          sudo apt-get update
+          apt-get update
 
           # install packages for node modules
-          sudo apt-get install -y fontforge ttfautohint
+          apt-get install -y fontforge ttfautohint
 
           # install ruby
           RUBY_VERSION=$(cat .ruby-version || echo "3.2.2")
