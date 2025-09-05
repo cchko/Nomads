@@ -27,14 +27,17 @@ jobs:
           # update package manager
           apt-get update
 
-          # install packages for node modules
-          apt-get install -y fontforge ttfautohint
+          # install C compiler
+          apt-get install -y build-essential
 
           # install Git
           apt-get install -y git
 
           # install Curl for Ruby gem downloads
           apt-get install -y curl
+
+          # install packages for node modules
+          apt-get install -y fontforge ttfautohint
 
           # install ruby
           RUBY_VERSION=$(cat .ruby-version 2>/dev/null || echo "3.2.2")
