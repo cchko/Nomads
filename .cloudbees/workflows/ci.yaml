@@ -18,17 +18,14 @@ jobs:
     steps:
       - name: Checkout
         uses: https://github.com/cloudbees-io/checkout@v1
-      - name: Run tests in Ubuntu
-        uses: docker://ubuntu:24.04
+      - name: Run tests in official Ruby Docker image
+        uses: docker://ruby:3.2
         shell: bash
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/nomads_test
         run: |
           # update package manager
           apt-get update
-
-          # install C compiler
-          apt-get install -y build-essential
 
           # install Git
           apt-get install -y git
@@ -39,18 +36,8 @@ jobs:
           # install packages for node modules
           apt-get install -y fontforge ttfautohint
 
-          # install ruby
-          apt-get install -y zlib1g-dev libssl-dev libreadline-dev libpq-dev libffi-dev
-          RUBY_VERSION=$(cat .ruby-version 2>/dev/null || echo "3.2.2")
-          echo "Ruby Version: $RUBY_VERSION"
-          git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-          eval "$(~/.rbenv/bin/rbenv init - bash)"
-          git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
-          if ! rbenv install $RUBY_VERSION ; then cat /tmp/ruby-build.*.log && exit 1; fi
-          rbenv global $RUBY_VERSION
-          gem install bundler:2.3.26
-
           # setup app
+          gem install bundler:2.3.26
           bundle install
           export RAILS_ENV=test
 
